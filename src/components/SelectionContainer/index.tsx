@@ -20,11 +20,10 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
       clearSelectionBox: () => setSelectionBox(null),
     }),
   );
-
+  console.log(selectionBox)
   return (
     <div ref={containerRef}>
       {!!selectionBox &&
-        !!containerRef.current &&
         ReactDOM.createPortal(
           <div
             {...props}
