@@ -103,7 +103,7 @@ export function useSelectionLogic<T extends HTMLElement>({
         };
 
         // we detect move only after some small movement
-        if (calculateBoxArea(newSelectionBox) > 10) {
+        if (calculateBoxArea(newSelectionBox) > 0) {
           if (!isSelecting.current) {
             if (currentSelectionStart?.current) {
               currentSelectionStart.current();
