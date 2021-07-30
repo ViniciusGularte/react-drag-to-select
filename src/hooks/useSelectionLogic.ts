@@ -110,16 +110,16 @@ export function useSelectionLogic<T extends HTMLElement>({
             }
             isSelecting.current = true;
           }
-          containerRef.current?.drawSelectionBox(newSelectionBox);
+          if (!newSelectionBox) {
+            containerRef.current?.drawSelectionBox(newSelectionBox)
+          }
           currentSelectionChange.current(boxInContainer);
         } else if (isSelecting) {
           currentSelectionChange.current(boxInContainer);
         }
-      } else {
-        cancelCurrentSelection();
-      }
+      } 
     },
-    [cancelCurrentSelection, containerRef],
+    [ containerRef],
   );
 
   const onMouseMove = useCallback(
