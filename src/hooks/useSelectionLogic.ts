@@ -119,7 +119,7 @@ export function useSelectionLogic<T extends HTMLElement>({
         cancelCurrentSelection();
       }
     },
-    [cancelCurrentSelection, containerRef],
+    [ containerRef],
   );
 
   const onMouseMove = useCallback(
@@ -147,7 +147,7 @@ export function useSelectionLogic<T extends HTMLElement>({
         window?.removeEventListener('mouseup', onMouseUp);
       }
     },
-    [eventsElement, cancelCurrentSelection, onMouseMove],
+    [eventsElement,  onMouseMove],
   );
 
   const onMouseDown = useCallback(
