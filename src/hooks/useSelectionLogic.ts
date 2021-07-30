@@ -115,6 +115,8 @@ export function useSelectionLogic<T extends HTMLElement>({
         } else if (isSelecting) {
           currentSelectionChange.current(boxInContainer);
         }
+      } else {
+        cancelCurrentSelection();
       }
     },
     [cancelCurrentSelection, containerRef],
