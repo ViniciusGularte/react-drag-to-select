@@ -17,6 +17,6 @@ export type OnSelectionChange = (box: SelectionBox) => void;
 export interface MouseSelectionRef {
   drawSelectionBox: OnSelectionChange;
   clearSelectionBox: () => void;
-  getBoundingClientRect: () => DOMRect | undefined;
-  getParentBoundingClientRect: () => DOMRect | undefined;
+  // getBoundingClientRect: () => DOMRect | undefined;
+  // getParentBoundingClientRect: () => DOMRect | undefined;
 }

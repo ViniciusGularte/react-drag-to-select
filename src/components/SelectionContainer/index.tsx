@@ -10,16 +10,17 @@ export interface MouseSelectionProps extends React.HTMLAttributes<HTMLDivElement
 const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectionBox, setSelectionBox] = useState<null | SelectionBox>(null);
+
   useImperativeHandle(
     ref,
     (): MouseSelectionRef => ({
-      getBoundingClientRect: () => containerRef.current?.getBoundingClientRect(),
-      getParentBoundingClientRect: () => containerRef?.current?.parentElement?.getBoundingClientRect(),
-      drawSelectionBox: (state) => { console.log(state,'state');setSelectionBox(state)},
-      clearSelectionBox: () => { console.log('limpou');setSelectionBox(null)},
+      // getBoundingClientRect: () => containerRef.current?.getBoundingClientRect(),
+      // getParentBoundingClientRect: () => containerRef?.current?.parentElement?.getBoundingClientRect(),
+      drawSelectionBox: setSelectionBox,
+      clearSelectionBox: () => setSelectionBox(null),
     }),
   );
-console.log(containerRef.current)
+
   return (
     <div ref={containerRef}>
       {!!selectionBox &&
