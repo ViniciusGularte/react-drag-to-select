@@ -24,7 +24,7 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
   return (
     <div ref={containerRef}>
       {!!selectionBox &&
-        !!containerRef.current &&
+        !!ref &&
         ReactDOM.createPortal(
           <div
             {...props}
@@ -38,7 +38,7 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
               ...(selectionBox || {}),
             }}
           />,
-          containerRef.current,
+          ref,
         )}
     </div>
   );
