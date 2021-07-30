@@ -14,8 +14,8 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
   useImperativeHandle(
     ref,
     (): MouseSelectionRef => ({
-      getBoundingClientRect: () => {console.log(containerRef.current?.getBoundingClientRect(),'aaaaa');containerRef.current?.getBoundingClientRect()},
-      getParentBoundingClientRect: () => { console.log(containerRef?.current?.parentElement?.getBoundingClientRect(),'bbbb'); containerRef?.current?.parentElement?.getBoundingClientRect(),},
+      getBoundingClientRect: () => {console.log(containerRef.current?.getBoundingClientRect(),'aaaaa'); return containerRef.current?.getBoundingClientRect()},
+      getParentBoundingClientRect: () => { console.log(containerRef?.current?.parentElement?.getBoundingClientRect(),'bbbb'); return containerRef?.current?.parentElement?.getBoundingClientRect(),},
       drawSelectionBox: setSelectionBox,
       clearSelectionBox: () => setSelectionBox(null),
     }),
