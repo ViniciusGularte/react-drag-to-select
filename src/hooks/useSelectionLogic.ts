@@ -63,7 +63,7 @@ export function useSelectionLogic<T extends HTMLElement>({
     if (currentSelectionEnd?.current) {
       currentSelectionEnd.current();
     }
-  }, [containerRef]);
+  }, []);
 
   /**
    * method to calculate point from event in context of the whole screen
@@ -119,7 +119,7 @@ export function useSelectionLogic<T extends HTMLElement>({
         cancelCurrentSelection();
       }
     },
-    [ containerRef],
+    [cancelCurrentSelection, containerRef],
   );
 
   const onMouseMove = useCallback(
@@ -139,7 +139,7 @@ export function useSelectionLogic<T extends HTMLElement>({
     (e: Event) => {
       // handle only left button click
       if ((e as MouseEvent).button === 0) {
-        // cancelCurrentSelection();
+        cancelCurrentSelection();
         document.body.style.removeProperty('userSelect');
         document.body.style.removeProperty('webkitUserSelect');
 
