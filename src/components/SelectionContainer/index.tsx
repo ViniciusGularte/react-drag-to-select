@@ -17,10 +17,10 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
       getBoundingClientRect: () => containerRef.current?.getBoundingClientRect(),
       getParentBoundingClientRect: () => containerRef?.current?.parentElement?.getBoundingClientRect(),
       drawSelectionBox: setSelectionBox,
-      clearSelectionBox: () => setSelectionBox(null),
+      clearSelectionBox: () => { console.log('nulo');setSelectionBox(null)},
     }),
   );
-console.log(selectionBox,'box selection')
+console.log(    !!containerRef.current,selectionBox,'box selection')
   return (
     <div ref={containerRef}>
       {!!selectionBox &&
