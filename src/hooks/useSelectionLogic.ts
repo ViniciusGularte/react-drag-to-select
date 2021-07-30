@@ -110,14 +110,14 @@ export function useSelectionLogic<T extends HTMLElement>({
             }
             isSelecting.current = true;
           }
-          if (newSelectionBox) {
-            containerRef.current?.drawSelectionBox(newSelectionBox)
-          }
+          containerRef.current?.drawSelectionBox(newSelectionBox);
           currentSelectionChange.current(boxInContainer);
         } else if (isSelecting) {
           currentSelectionChange.current(boxInContainer);
         }
-      } 
+      } else {
+        cancelCurrentSelection();
+      }
     },
     [ containerRef],
   );
@@ -139,7 +139,7 @@ export function useSelectionLogic<T extends HTMLElement>({
     (e: Event) => {
       // handle only left button click
       if ((e as MouseEvent).button === 0) {
-        cancelCurrentSelection();
+        // cancelCurrentSelection();
         document.body.style.removeProperty('userSelect');
         document.body.style.removeProperty('webkitUserSelect');
 
