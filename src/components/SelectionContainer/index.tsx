@@ -7,23 +7,25 @@ export interface MouseSelectionProps extends React.HTMLAttributes<HTMLDivElement
 /**
  * This is a component responsible for displaying mouse selection box
  */
-const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps, ref:any) => {
+const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectionBox, setSelectionBox] = useState<null | SelectionBox>(null);
 
   useImperativeHandle(
     ref,
     (): MouseSelectionRef => ({
-      getBoundingClientRect: () => ref.current?.getBoundingClientRect(),
-      getParentBoundingClientRect: () => ref?.current?.parentElement?.getBoundingClientRect(),
+      getBoundingClientRect: () => containerRef.current?.getBoundingClientRect(),
+      getParentBoundingClientRect: () => containerRef?.current?.parentElement?.getBoundingClientRect(),
       drawSelectionBox: setSelectionBox,
       clearSelectionBox: () => setSelectionBox(null),
     }),
   );
+  console.log(containerRef.current,'container')
 
   return (
-    <div >
+    <div ref={containerRef}>
       {!!selectionBox &&
+        !!containerRef.current &&
         ReactDOM.createPortal(
           <div
             {...props}
@@ -37,7 +39,7 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
               ...(selectionBox || {}),
             }}
           />,
-          ref,
+          containerRef.current,
         )}
     </div>
   );
