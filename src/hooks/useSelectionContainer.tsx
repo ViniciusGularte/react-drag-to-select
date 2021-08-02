@@ -53,7 +53,7 @@ export function useSelectionContainer<T extends HTMLElement>({
 
   const DragSelection = () => <MouseSelection ref={containerRef} {...selectionProps} />;
   DragSelection.displayName = 'DragSelection';
-
+  console.log('hot reloaded,',containerRef)
   return {
     cancelCurrentSelection,
     DragSelection,
