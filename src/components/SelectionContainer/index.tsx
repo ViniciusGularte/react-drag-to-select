@@ -20,7 +20,7 @@ const MouseSelection = forwardRef(({ style = {}, ...props }: MouseSelectionProps
       clearSelectionBox: () => setSelectionBox(null),
     }),
   );
-  console.log(containerRef.current,'container')
+  console.log(containerRef.current, '-------------', ref);
 
   return (
     <div ref={containerRef}>
