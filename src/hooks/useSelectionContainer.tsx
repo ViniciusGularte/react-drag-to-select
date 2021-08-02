@@ -50,10 +50,10 @@ export function useSelectionContainer<T extends HTMLElement>({
     isEnabled,
     eventsElement,
   });
-  console.log('hot reloaded,',selectionProps,containerRef)
-  const DragSelection = React.memo(() => {
-    return <MouseSelection ref={containerRef} {...selectionProps} />
-  }, selectionProps);
+  const DragSelection = () => <MouseSelection ref={containerRef} {...selectionProps} />;
+
+  console.log('hot reloaded,', selectionProps, containerRef);
+
   DragSelection.displayName = 'DragSelection';
   return {
     cancelCurrentSelection,
